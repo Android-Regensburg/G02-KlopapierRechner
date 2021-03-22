@@ -91,6 +91,25 @@ public class InputActivity extends AppCompatActivity implements SeekBar.OnSeekBa
     }
 
     /**
+     * Wird aus der Callback-Methode des Button-Listeners aufgerufen und startet die zweite Activity
+     * mit den aktuellen Werten aus den SeekBars bzw. TextViews.
+     */
+    private void onResultButtonClicked() {
+        // Auslesen der aktuell ausgewählten Anzahl an Klopapierrollen
+        int numberOfRolls = Integer.parseInt(currentRollCount.getText().toString());
+        // Auslesen der aktuell ausgewählten Anzahl an Personen im Haushalt
+        int numberOfPeople = Integer.parseInt(currentNumberOfPeople.getText().toString());
+        // Erstellen des Intents zum Wechsel von dieser in die nächste Activit
+        Intent intent = new Intent(InputActivity.this, OutputActivity.class);
+        // Hinzufügen der ausgewählten Werte zum Intent, damit diese in der nächsten Activity
+        // genutzt werden können
+        intent.putExtra(Config.ROLL_KEY, numberOfRolls);
+        intent.putExtra(Config.PEOPLE_KEY, numberOfPeople);
+        // Starten der zweiten Activity
+        startActivity(intent);
+    }
+
+    /**
      * Callback-Methode, über die diese Activity über Änderungen an den SeekBars informiert wird.
      */
     @Override
@@ -140,10 +159,10 @@ public class InputActivity extends AppCompatActivity implements SeekBar.OnSeekBa
      */
     @Override
     public void onClick(View v) {
-        // Auslesen der aktuell ausgewählten Anzahl an Klopapierrollen
-        int numberOfRolls = Integer.parseInt(currentRollCount.getText().toString());
-        // Auslesen der aktuell ausgewählten Anzahl an Personen im Haushalt
-        int numberOfPeople = Integer.parseInt(currentNumberOfPeople.getText().toString());
+        // Die Programmlogik bzw. der Ablauf, der beim Klick auf den Button ausgeführt wird, wird
+        // in einer separaten Methode implementiert. Versuchen Sie die Callback-Methode so
+        // übersichtlich wie möglich zu halten.
+        onResultButtonClicked();
     }
 
 }
