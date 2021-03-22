@@ -22,6 +22,6 @@ public class InputActivity extends AppCompatActivity {
         // @GUIDE Diese Methode wird beim Start der Anwendung automatisch aufgerufen
         super.onCreate(savedInstanceState);
         // Das vorhandene Layout ersetzen wir im ersten Bearbeitungschritt durch eine neue Datei
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_input);
     }
 }
